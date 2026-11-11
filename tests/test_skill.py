@@ -222,6 +222,11 @@ def main():
         text, stop = run("slice", t, fs, budget=50)
         ok &= check("HTML page instead of the directory (security check): stops", stop and "unexpected" in stop,
                     stop)
+    dup = card({"id": "00000001-0000-4000-8000-000000000000", "name": "Test Person", "type": "Growth",
+                "country": "Country 1", "industry": "SaaS", "title": "CEO", "company": "X"}).replace(
+        '<span class="badge-secondary x">Growth</span>', '<span class="badge-secondary x">Growth</span>' * 2)
+    got = s.parse_cards(dup, EVENT)[0]["company_type"]
+    ok &= check("a type shown twice on a card is kept once", got == "growth", got)
     ok &= enrich_checks()
     ok &= queue_check()
     print("\nALL PASS" if ok else "\nSOME CHECKS FAILED")

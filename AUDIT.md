@@ -46,7 +46,7 @@ They are enforced by the scripts, so they hold even if Claude misreads an instru
 python3 -I tests/test_skill.py
 ```
 
-28 checks, no network. Web Summit is replaced by a fake server that answers 401, 403, 429, 302, 503 or a security-check page, or serves synthetic attendees in a new random order on every request (like the real portal). The tests cover: stopping on each refusal, the request budget, resuming without re-downloading, a complete export despite the random order, the attendee-type filter, the session never appearing in output, the accept/review/reject rule, the ICP filter and the lock on paid tools. Expected last line: `ALL PASS`.
+29 checks, no network. Web Summit is replaced by a fake server that answers 401, 403, 429, 302, 503 or a security-check page, or serves synthetic attendees in a new random order on every request (like the real portal). The tests cover: stopping on each refusal, the request budget, resuming without re-downloading, a complete export despite the random order, the attendee-type filter, the session never appearing in output, the accept/review/reject rule, the ICP filter and the lock on paid tools. Expected last line: `ALL PASS`.
 
 ## 5. Watch a run
 

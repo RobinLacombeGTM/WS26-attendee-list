@@ -164,7 +164,7 @@ def parse_cards(page_html: str, event: str) -> list:
         title, company = (hl.split(" at ", 1) if " at " in hl else (hl, ""))
         full = _text(name.group(1)) if name else ""
         first, _, last = full.partition(" ")
-        badge_list = [_text(b) for b in badges]
+        badge_list = list(dict.fromkeys(_text(b) for b in badges))  # a card can repeat a type
         badge = " | ".join(badge_list)
         rows.append({"user_id": pid.group(1), "first_name": first, "last_name": last,
                      "title": title.strip(), "company_name": company.strip(),
