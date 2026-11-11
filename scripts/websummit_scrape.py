@@ -149,6 +149,18 @@ def _text(fragment: str) -> str:
     return html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", fragment))).strip()
 
 
+CREDENTIALS = {"cfa", "mba", "phd", "ph.d", "ph.d.", "md", "cpa", "msc", "ms", "ma", "bsc", "ba", "rn", "bsn",
+               "pe", "esq", "jd", "llm", "pmp", "cissp", "frsa", "obe", "mbe", "jr", "sr", "ii", "iii"}
+
+
+def clean_name(full: str) -> str:
+    """Drop credentials after the name ("Jane Doe CFA, MBA" -> "Jane Doe"): searches need the surname."""
+    words = full.split(",")[0].split()
+    while len(words) > 2 and words[-1].lower().strip(".") in CREDENTIALS:
+        words.pop()
+    return " ".join(words)
+
+
 def parse_cards(page_html: str, event: str) -> list:
     rows = []
     for chunk in CARD_SPLIT.split(page_html)[1:]:
@@ -162,7 +174,7 @@ def parse_cards(page_html: str, event: str) -> list:
         country = re.search(r'bi-geo-alt[^>]*></i>\s*<span[^>]*>(.*?)</span>', chunk, re.S)
         hl = _text(headline.group(1)) if headline else ""
         title, company = (hl.split(" at ", 1) if " at " in hl else (hl, ""))
-        full = _text(name.group(1)) if name else ""
+        full = clean_name(_text(name.group(1)) if name else "")
         first, _, last = full.partition(" ")
         badge_list = list(dict.fromkeys(_text(b) for b in badges))  # a card can repeat a type
         badge = " | ".join(badge_list)

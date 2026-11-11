@@ -104,6 +104,8 @@ How to pick and write a find:
 
 Every 50 searches, show `python3 SCRIPTS/enrich.py status` and ask whether to continue. If your web search tool is unavailable or stops answering, say so and offer the optional tools below.
 
+Expect web search to do well on company websites and company pages, and poorly on personal profiles: Web Summit hides LinkedIn, and a general web search tool often returns other people with the same first name, or declines to search for a named person. If fewer than half of the people get a profile after the first 10 person searches, stop the person searches, tell the user, and offer Firecrawl (step 5): its free plan covers about 500 searches and finds far more profiles. Do not retry the same person searches with variants.
+
 ## Step 5 (optional): free-tier tools for what web search missed
 
 Offer these only when gaps remain and the user wants more coverage. Each needs a free account and an API key that the user puts in `.env` in the work folder (one line such as `FIRECRAWL_API_KEY=...`). They edit that file themselves.

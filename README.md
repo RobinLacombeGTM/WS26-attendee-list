@@ -38,10 +38,10 @@ Want to check the code first? [AUDIT.md](AUDIT.md) lists every place the code se
 1. Claude shows you how to copy your Web Summit session from the browser (about 1 minute). The session goes straight into a local file and never into the chat.
 2. You pick the attendee types you care about (exhibitors, speakers, everyone). Claude exports that part of the directory you can already browse in the attendee portal: about 15 minutes for exhibitors and speakers, about 55 minutes for everyone, one request every 2.5 seconds.
 3. You say who you want to reach: your ICP (industries, countries, exhibitors) and personas (roles, titles). Claude narrows the list to 50 to 300 people.
-4. Claude finds the websites and LinkedIn profiles with web search. A profile counts as found only when the search result shows both the person's name and their company. The rest is marked for a quick manual check.
+4. Claude finds the company websites and LinkedIn pages with web search. For personal LinkedIn profiles (Web Summit hides them), web search alone finds few: a free Firecrawl account does much better, and Claude shows the cost before using it. A profile counts as found only when the search result shows both the person's name and their company. The rest is marked for a quick manual check.
 5. You get a spreadsheet (`enriched.csv`) with a status and the evidence for every link.
 
-Optional: if you have free accounts on Firecrawl, Apify or Hunter.io, Claude can use them for the profiles web search missed. It shows the cost first and waits for your yes.
+Recommended for personal profiles: a free Firecrawl account (firecrawl.dev, 1,000 free credits, about 500 searches). Apify and Hunter.io also work. Claude shows the cost first and waits for your yes.
 
 ## Built-in safeguards
 

@@ -227,6 +227,9 @@ def main():
         '<span class="badge-secondary x">Growth</span>', '<span class="badge-secondary x">Growth</span>' * 2)
     got = s.parse_cards(dup, EVENT)[0]["company_type"]
     ok &= check("a type shown twice on a card is kept once", got == "growth", got)
+    for raw, want in (("Jane Doe CFA, MBA", "Jane Doe"), ("Jane Doe, PhD", "Jane Doe"),
+                      ("Jean-Luc van der Berg", "Jean-Luc van der Berg"), ("Ann Ba", "Ann Ba")):
+        ok &= check(f"clean_name({raw!r})", s.clean_name(raw) == want, s.clean_name(raw))
     ok &= enrich_checks()
     ok &= queue_check()
     print("\nALL PASS" if ok else "\nSOME CHECKS FAILED")
