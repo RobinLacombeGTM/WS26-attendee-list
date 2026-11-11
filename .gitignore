@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.DS_Store
+# never commit a session, keys or attendee data
+websummit_curl.txt
+*curl*.txt
+.env
+*.csv
+*.jsonl
+websummit-list/
+enrichment/
+websummit-list-work/

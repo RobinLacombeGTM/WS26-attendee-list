@@ -1,0 +1,13 @@
+{
+  "_help": "Every list is optional: leave it empty [] to keep everyone. Values come from the Web Summit directory (run `enrich.py values` to see them). company_types = attendee types (partner, growth, beta, alpha, speaker, investor...).",
+  "countries": ["United States", "Canada", "United Kingdom", "Ireland", "France", "Belgium"],
+  "company_types": ["partner", "growth", "beta"],
+  "industries": ["SaaS", "AI & machine learning", "Security", "Data & analytics", "Fintech & financial services"],
+  "partner_types": [],
+  "occupations": [],
+  "business_types": [],
+  "title_include": ["ceo", "chief executive", "founder", "co-founder", "cro", "chief revenue", "chief commercial", "vp sales", "head of sales", "sales director", "cmo", "head of marketing"],
+  "title_exclude": ["intern", "student", "assistant", "investor", "journalist", "editor"],
+  "max_per_company": 2,
+  "limit": 150
+}
